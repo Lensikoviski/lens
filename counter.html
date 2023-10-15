@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="life">R I P</h1>
+        <div id="timer"></div>
+        <br>
+        <div id="days"></div>
+    </div>
+
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("June 13, 2024 00:00:00").getTime();
+
+        // Update the countdown every second
+        var x = setInterval(function () {
+            // Get the current date and time
+            var now = new Date().getTime();
+
+            // Calculate the time remaining
+            var distance = countDownDate - now;
+
+            // Calculate days, hours, minutes, and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown in the "timer" div
+            document.getElementById("timer").innerHTML = hours + " h" + "  :  " + minutes + " m" + "   : " + seconds + " s";
+
+            document.getElementById("days").innerHTML = days + " days left"
+
+            // When the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
